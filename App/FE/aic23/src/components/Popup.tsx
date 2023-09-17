@@ -21,6 +21,7 @@ const Popup: FC<PopupProps> = ({ setId, activePath }) => {
   const [page, setPage] = useState(0);
   const ref = useRef<ReactPlayer>(null);
   const [time, setTime] = useState({frame_idx: 0, second: 0});
+  const [url, setUrl] = useState("");
 
   const activeImage = images.find((image) => image.path === activePath) || {
     path: "",
@@ -36,10 +37,10 @@ const Popup: FC<PopupProps> = ({ setId, activePath }) => {
         setLoading(true);
         const paths = activePath.split("/");
         const folder = paths[paths.length - 2];
-        const { data: {second, frame_idx} } = await axiosClient.post("/frameindex", {
+        const { data: {second, frame_idx, url} } = await axiosClient.post("/frameindex", {
           query : activePath,
         });
-
+        setUrl(url)
         const { data } = await axiosClient.post<ImageType[]>("/filename", {
           query: folder,
         });
@@ -70,8 +71,6 @@ const Popup: FC<PopupProps> = ({ setId, activePath }) => {
     setPage((prev) => Math.max(0, prev - 1));
   };
 
-  const videoPath = getFolder(activePath).split("/")[0];
-  const videoFolder = videoPath.split("_")[0];
 
   return (
     <div
@@ -148,7 +147,7 @@ const Popup: FC<PopupProps> = ({ setId, activePath }) => {
             <div className="mt-5"></div>
             <ReactPlayer
               ref={ref}
-              url={`http://localhost:8000/videos/${videoFolder}/${videoPath}`}
+              url={url}
               width={"100%"}
               height={"auto"}
               controls

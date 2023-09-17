@@ -155,6 +155,13 @@ async def create_item(data: Query) -> Time:
     Time.second = second
     return Time
     
+    
+### Clear everything    
+@app.get("/clear")
+async def clear_item():
+    RetrivalHistory.prev_res = []
+    
+    
 
 @app.get("/images/{folder}/keyframes/{video}/{id}")
 async def get_image(folder:str, video: str, id:str):

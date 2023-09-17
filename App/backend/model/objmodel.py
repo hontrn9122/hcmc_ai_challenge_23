@@ -1,8 +1,11 @@
 import json
 import copy
 from typing import List, Set
+import os 
 
-JSON_PATH = 'C:\\Users\\admin\\Projects\\AI challenge\\backend\\Data\\object\\obj_data.json'
+
+current_path =  os.getcwd()
+JSON_PATH = f'{current_path}/Data/object/obj_data.json'
 
 
 with open(JSON_PATH, 'r') as of:

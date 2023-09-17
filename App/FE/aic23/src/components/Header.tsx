@@ -244,7 +244,7 @@ const Header: FC<HeaderProps> = ({ setImages, loading, setLoading }) => {
                 console.log(error);
               }
             }}
-            disabled={filters.length === 0 || loading}
+            disabled={loading}
           >
             Clear
           </Button>

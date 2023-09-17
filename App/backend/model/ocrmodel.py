@@ -12,10 +12,10 @@ import pandas as pd
 
 import os
 import json
-
-merged_ocr_path = "C:\\Users\\admin\\Projects\\AI challenge\\backend\\Data\\ocr\\merged_result_ocr.json"
-merged_results_path = "C:\\Users\\admin\\Projects\\AI challenge\\backend\\Data\\ocr\\merged_results.json"
-mapped_data_path = "C:\\Users\\admin\\Projects\\AI challenge\\backend\\Data\\ocr\\updated_results.json"
+current_path =  os.getcwd()
+merged_ocr_path = f"{current_path}/Data/ocr/merged_result_ocr.json"
+merged_results_path = f"{current_path}/Data/ocr/merged_results.json"
+mapped_data_path = f"{current_path}/Data/ocr/updated_results.json"
 
 # Load the merged data from the JSON file
 with open(merged_ocr_path, "r") as json_file:

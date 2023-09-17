@@ -7,13 +7,15 @@ import time
 import pickle
 from langdetect import detect
 from googletrans import Translator
+import os
 
+current_path =  os.getcwd()
 # Load the model and tokenizer once
 tokenizer = AutoTokenizer.from_pretrained("princeton-nlp/sup-simcse-roberta-base")
 model = AutoModel.from_pretrained("princeton-nlp/sup-simcse-roberta-base")
 # index = faiss.read_index("C:/Users/admin/Projects/AI challenge/backend/Data/kosmos/kosmos.index")
-index = faiss.read_index("C:/Users/admin/Projects/AI challenge/backend/Data/kosmos/large.index")
-with open("C:/Users/admin/Projects/AI challenge/backend/Data/kosmos/test", "rb") as fp:   # Unpickling
+index = faiss.read_index(f"{current_path}/Data/kosmos/large.index")
+with open(f"{current_path}/Data/kosmos/test", "rb") as fp:   # Unpickling
     frame_paths = pickle.load(fp)
 translator = Translator() 
 # with open("C:/Users/admin/Projects/AI challenge/backend/Data/kosmos/listofquery", 'rb') as fp:   # Unpickling

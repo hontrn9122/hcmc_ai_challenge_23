@@ -127,9 +127,10 @@ class MyFaiss:
       
       
 
-bin_file='C:/Users/admin/Projects/AI challenge/backend/Data/clip/faiss_index_b2.bin'
-json_path = 'C:/Users/admin/Projects/AI challenge/backend/Data/clip/updated_merged_results.json'
-cosine_faiss = MyFaiss( bin_file, json_path)    
+current_path =  os.getcwd()
+bin_file=f'{current_path}/Data/clip/faiss_index_b2.bin'
+json_path = f'{current_path}/Data/clip/updated_merged_results.json'
+cosine_faiss = MyFaiss(bin_file, json_path)    
 
 
 
@@ -140,7 +141,7 @@ cosine_faiss = MyFaiss( bin_file, json_path)
 
 # start = time.time()
 # scores, _, infos_query, image_paths = cosine_faiss.text_search(text, k=50)
-# end = time.time()
-# print(end-start)
-# # print(infos_query)
+# # end = time.time()
+# # print(end-start)
+# # # print(infos_query)
 # print(image_paths)
