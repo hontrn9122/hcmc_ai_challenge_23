@@ -110,19 +110,6 @@ async def create_item(data: Query) -> list[Item]:
         return items
 
 
-# @app.post("/ocrmodel", response_model=list[Item])
-# async def create_item(data: Query) -> list[Item]:
-#     global prev_res
-#     query = data.query
-#     query = query.lower()
-#     listofkeyword = query.split(',')
-#     listofkeyword = [a.strip() for a in listofkeyword]
-#     print(listofkeyword)
-#     listofpaths = retrieveOCR(listofkeyword, prev_res)
-#     items = [Item(path = a) for a in listofpaths]
-#     prev_res = listofpaths
-#     return items 
-
 
 @app.post("/filter", response_model=list[Item])
 async def retrieve_item(data: FilterQuery) -> list[Item]:
@@ -167,9 +154,3 @@ async def clear_item():
 async def get_image(folder:str, video: str, id:str):
     return FileResponse(os.getcwd() + (f'/Data/images/{folder}/keyframes/{video}/{id}.jpg'))
 
-# src="http://localhost:8000/videos/L18/L18_V005/"
-# folder = L18
-# # video = L18_V005
-# @app.get("/videos/{folder}/{video}")
-# async def get_video(folder:str, video: str):
-#     return FileResponse((f'D:/ai_challenge_23_data/Videos_{folder}/video/{video}.mp4'))
