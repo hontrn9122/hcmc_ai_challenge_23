@@ -114,7 +114,7 @@ def map_format_to_frame_info(format_string, frame_id):
 
 # Calculate substring scores for each data entry
 def retrieveOCR(query_text, prev_res):
-    if(len(prev_res)):
+    if(len(prev_res) == 0):
         results = []
         for key, value in merged_ocr.items():
             substring_score = calculate_substring_score(query_text, value)

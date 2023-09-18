@@ -8,7 +8,7 @@ from path2utube import frame2url
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import os
-
+import copy
 
 from pathlib import Path
 from pydantic import BaseModel
@@ -115,7 +115,7 @@ async def create_item(data: Query) -> list[Item]:
 async def retrieve_item(data: FilterQuery) -> list[Item]:
     ocr, labels, qtys, colors = data.ocr, data.labels, data.qtys, data.colors
     #   handle ocr query
-    res = RetrivalHistory.prev_res
+    res =  RetrivalHistory.prev_res[:]
     
     if ocr != '':
         ocr = ocr.lower()
@@ -125,7 +125,6 @@ async def retrieve_item(data: FilterQuery) -> list[Item]:
         res = retrieveOCR(listofkeyword,res)
     #   handle object detection
     if len(labels) != 0:
-        # print("hhuhu")
         res = retrieve_obj(labels, qtys=qtys, colors=colors, prev_res=res)
     # print(RetrivalHistory.prev_res)
     
