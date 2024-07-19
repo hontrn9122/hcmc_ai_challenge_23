@@ -1,5 +1,0 @@
-name: aichallenge
-channels:
-  - conda-forge
-  - defaults
-prefix: C:\Users\admin\anaconda3\envs\aichallenge
